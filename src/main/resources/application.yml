@@ -1,0 +1,7 @@
+spring:
+  config:
+    import:
+      - application-mongo.yml
+      - application-rabbit.yml
+      - application-redis.yml
+      - mapping-info.yml

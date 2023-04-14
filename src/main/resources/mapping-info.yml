@@ -1,0 +1,20 @@
+aggregation:
+  mapping:
+    input1:
+      outputs:
+        - output1
+        - output2
+      wait-time: 30s
+      out-type: RABBIT
+    input2:
+      outputs:
+        - http://127.0.0.1:8080/test1
+        - http://localhost:8080/test2
+      wait-time: 1m
+      out-type: HTTP
+    input3:
+      outputs:
+        - output1
+        - output2
+      out-type: RABBIT
+
