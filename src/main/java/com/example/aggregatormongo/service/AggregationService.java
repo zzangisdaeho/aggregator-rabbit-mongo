@@ -71,7 +71,7 @@ public class AggregationService {
 
         outputs.forEach(s -> {
             if(mappingDetailInfo.getOutType() == AggregationMapping.OutType.RABBIT){
-                aggregationRabbitProducer.dispatch("", s, successLog);
+                aggregationRabbitProducer.dispatch("", s, successLog, aggregationDto.getMessage());
             } else if (mappingDetailInfo.getOutType() == AggregationMapping.OutType.HTTP) {
                 httpOutbound.dispatch(HttpMethod.POST, s, successLog);
             }

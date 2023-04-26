@@ -25,15 +25,4 @@ public class HttpInboundController {
         System.out.println("aggregationMapping = " + aggregationMapping);
     }
 
-    @PostMapping("test1")
-    public void test1(@RequestBody Object obj){
-        System.out.println("HttpInboundController.test1");
-        System.out.println("obj = " + obj);
-    }
-
-    @PostMapping("test2")
-    public void test2(@RequestBody Object obj){
-        System.out.println("HttpInboundController.test2");
-        System.out.println("obj = " + obj);
-    }
 }

@@ -21,11 +21,12 @@ public class AggregationRabbitProducer {
 
     private final ObjectMapper objectMapper;
 
-    public void dispatch(String exchangeName, String routingKey, Object payload) {
+    public void dispatch(String exchangeName, String routingKey, Object payload, Message beforeMessage) {
         try {
             Message message = MessageBuilder
                     .withBody(objectMapper.writeValueAsString(payload).getBytes())
-                    .andProperties(MessagePropertiesBuilder.newInstance().setTimestamp(new Date()).build())
+                    .copyHeaders(beforeMessage.getMessageProperties().getHeaders())
+                    .setTimestamp(new Date())
                     .build();
 
             rabbitTemplate.send(exchangeName, routingKey, message);

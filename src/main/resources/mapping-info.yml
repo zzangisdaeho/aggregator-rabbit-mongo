@@ -17,4 +17,7 @@ aggregation:
         - output1
         - output2
       out-type: RABBIT
-
+    settle:
+      outputs:
+        - quant.queue.settle.finish.v0
+      out-type: RABBIT

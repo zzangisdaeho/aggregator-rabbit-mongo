@@ -33,6 +33,7 @@ public class RabbitInboundConsumer {
                     .index(convertToInt(headers.get("index")))
                     .data(payload)
                     .from(substringBeforeLast(message.getMessageProperties().getReceivedRoutingKey(), "."))
+                    .message(message)
                     .build();
 
             applicationEventPublisher.publishEvent(aggregationDto);
@@ -52,6 +53,8 @@ public class RabbitInboundConsumer {
             return Integer.parseInt((String) obj);
         } else if (obj instanceof Long) {
             return ((Long) obj).intValue();
+        } else if (obj instanceof Integer){
+            return (Integer)obj;
         } else {
             throw new IllegalArgumentException("Unsupported index type. Expected String or Long.");
         }
